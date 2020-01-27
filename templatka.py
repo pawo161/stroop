@@ -136,7 +136,7 @@ if __name__ == "__main__":
         text_rand = ["ŻÓŁTY", "CZERWONY", "NIEBIESKI"]
         text_one = random.choice(text_rand)
 
-        text = font2.render(text_one, True, color)
+        text = font2.render(text_one, True, pygame.color.Color('black'))
         screen.blit(text,
         (300, 300))
         if step > 1:
