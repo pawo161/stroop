@@ -106,7 +106,8 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode(size, 0, 32)
 
     button = pygame.Rect(295, 295, 220, 60)
-    font = pygame.font.SysFont("arial", 36)    
+    font = pygame.font.SysFont("arial", 33)    
+    font2 = pygame.font.SysFont("arial", 36) 
 
     def time():
         time_passed = clock.tick(60)
@@ -135,7 +136,7 @@ if __name__ == "__main__":
         text_rand = ["ŻÓŁTY", "CZERWONY", "NIEBIESKI"]
         text_one = random.choice(text_rand)
 
-        text = font.render(text_one, True, color)
+        text = font2.render(text_one, True, color)
         screen.blit(text,
         (300, 300))
         if step > 1:
@@ -182,8 +183,8 @@ if __name__ == "__main__":
             czas = ""
             avg = 0
             if step > 1:
-                czas = time()
-                
+                time_passed = round(time_passed, 3)
+                czas = time_passed
                 time_wszystkie.append(czas)
             
                 avg = sum(time_wszystkie)/len(time_wszystkie)
@@ -191,8 +192,8 @@ if __name__ == "__main__":
             print(czas)
             # czas = float(czas)
             odswiezanie(czas)
-            step += 1
             time_passed=0
+            step += 1
            
         time_passed2 = clock2.tick(60)
         time_passed_seconds2 = time_passed2 / 1000.0

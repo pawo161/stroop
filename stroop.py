@@ -21,13 +21,16 @@ size = [800, 650]
 screen = pygame.display.set_mode(size, 0, 32)
 
 button = pygame.Rect(295, 295, 220, 60)
-font = pygame.font.SysFont("arial", 36)    
+font = pygame.font.SysFont("arial", 33)    
+font2 = pygame.font.SysFont("arial", 36) 
 
 def time():
     time_passed = clock.tick(60)
     time_passed_seconds = time_passed / 1000.0
+    
     print(time_passed_seconds)
     return time_passed_seconds
+    
     
 
 time_zgodne = []
@@ -51,12 +54,12 @@ def odswiezanie(czas):
     text_rand = ["ŻÓŁTY", "CZERWONY", "NIEBIESKI"]
     text_one = random.choice(text_rand)
 
-    text = font.render(text_one, True, color)
+    text = font2.render(text_one, True, color)
     screen.blit(text,
     (300, 300))
     if step > 1:
         if czas > 4:
-            text3 = font.render("Postaraj się bardziej, ({czas} s to jakiś  żart).".format(czas=czas), True, pygame.color.Color('black'))
+            text3 = font.render("Postaraj się bardziej, ({czas} s to jakiś żart).".format(czas=czas), True, pygame.color.Color('black'))
             screen.blit(text3, (80, 100))
             pygame.display.update()
         else:
@@ -97,7 +100,8 @@ while run:
                 czas = ""
                 avg = 0
                 if step > 1:
-                    czas = time()
+                    time_passed = round(time_passed, 3)
+                    czas = time_passed
                     
                     time_wszystkie.append(czas)
                 
@@ -106,8 +110,9 @@ while run:
                 print(czas)
                 # czas = float(czas)
                 odswiezanie(czas)
-                step += 1
                 time_passed=0
+                step += 1
+                
               
     
     time_passed2 = clock2.tick(60)
